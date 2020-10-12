@@ -1,0 +1,177 @@
+// Fonts
+@import url("https://fonts.googleapis.com/css?family=Nunito");
+
+// Variables
+@import "variables";
+
+// Bootstrap
+@import "~bootstrap/scss/bootstrap";
+@import "~vuejs-dialog/dist/vuejs-dialog.min.css";
+
+.modal-backdrop {
+    background-color: rgba(0, 0, 0, 0.5) !important;
+}
+
+.theme--light.v-messages {
+    color: black !important;
+}
+
+.theme--light.v-btn {
+    color: rgb(67, 160, 71) !important;
+    font-size: 14px !important;
+    font-family: Roboto, sans-serif !important;
+}
+
+// .v-application .primary--text{
+//     color: #1867c0 !important;
+//     caret-color: #1867c0 !important;
+
+// }
+
+input,
+.theme--light.v-input textarea {
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+// .theme--light.v-select .v-select__selection--comma {
+//     color: #255fa1 !important;
+// }
+
+// .v-list .v-list-item--active,
+// .v-list .v-list-item--active .v-icon {
+//     color: #4848d7 !important;
+// }
+
+.invalid-feedback {
+    display: block !important;
+}
+
+.responsive {
+    width: 350px;
+    height: 300px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-left: 40px;
+    margin-right: 40px;
+}
+
+.meal-div-edit {
+    width: 350px;
+    height: 300px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+
+.view-image {
+    width: 450px;
+    height: 300px;
+    margin-bottom: 30px;
+    margin-top: 0px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.modal-header {
+    background-color: #ffff !important;
+    color: rgba(0, 0, 0, 0.87) !important;
+    font-family: Roboto, sans-serif !important;
+    font-size: 24px !important;
+}
+
+// new color start here
+
+.v-toolbar__content,
+.v-toolbar__extension {
+    align-items: center;
+    display: flex;
+    position: relative;
+    z-index: 0;
+    background-color: #37ad47 !important;
+}
+
+// .v-application .indigo {
+//     background-color: #37ad47 !important;
+//     border-color: #37ad47 !important;
+// }
+.v-list .v-list-item--active,
+.v-list .v-list-item--active .v-icon {
+    color: rgba(31, 163, 36, 0.6) !important;
+}
+
+.v-application .primary--text {
+    color: #7acc7d !important;
+    caret-color: #8dcf8e !important;
+}
+
+// .theme--light.v-select .v-select__selection--comma {
+//     color: #54a125 !important;
+// }
+
+.footer {
+    background-color: #37ad47 !important;
+    border-color: #37ad47 !important;
+    font-size: 8px Roboto, sans-serif !important;
+    width: auto !important;
+    height: 40px !important;
+    position: relative !important;
+}
+.text-margin {
+    margin: 0 auto !important;
+}
+
+// scss of findmeal app
+.image-size {
+    height: 400px !important;
+}
+
+.slider {
+    transition: all 0.6s ease !important;
+    flex: none !important;
+}
+
+.nutri-text {
+    font-size: 10px !important;
+    font-family: Roboto, sans-serif !important;
+
+}
+.text-format{
+    padding-top: 8px !important;
+    font-size: 16px !important;
+    font-family: Roboto, sans-serif !important;
+    color: rgba(0, 0, 0, 0.6) !important;
+}
+
+//icon color
+
+.mdi-account-multiple::before {
+    content: "\F000E";
+    color: #30c62f !important;
+}
+
+.mdi-alarm::before {
+    content: "\F0020";
+    color: #30c62f !important;
+}
+
+.theme--light.v-select .v-select__selection--comma {
+    color: #6c757d !important;
+}
+
+.recipe-amount{
+
+    padding-left: 35px !important;
+    font-size: 12px !important;
+    font-family: Roboto, sans-serif !important;
+    color: #37Ad47 !important;
+}
+
+.meal-amount{
+
+    padding-left: 25px !important;
+    font-size: 18px !important;
+    font-family: Roboto, sans-serif !important;
+    color: #37Ad47 !important;
+}
