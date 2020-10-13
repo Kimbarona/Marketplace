@@ -57,20 +57,13 @@ class RecipeItemsController extends Controller
                 $product_image = $name->product_image;
             }
 
-        $productPrice = DB::table('prices')->select('price')
-        ->where('product_id', $productId)
-        ->get();
-            foreach($productPrice as $price)
-            {
-                $product_amount = $price->price;
-            }
+
 
 
             $recipeitem = new RecipeItem();
             $recipeitem->recipe_id = $request->recipe_id;
             $recipeitem->product_id = $request->product_id;
             $recipeitem->product_name = $product_name;
-            $recipeitem->product_amount = $product_amount;
             $recipeitem->quantity = $request->quantity;
             $recipeitem->uom = $request->uom;
             $recipeitem->product_image = $product_image;

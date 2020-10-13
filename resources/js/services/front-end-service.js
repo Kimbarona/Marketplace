@@ -6,10 +6,10 @@ import { http, httpFile } from "./http_service";
 // }
 
 // to search
-export function retrieveSearchData(meat_type) {
+export function retrieveSearchData(meat_type, data) {
     if (!meat_type) {
         return http().get("/meals");
     } else {
-        return httpFile().get(`meals/${meat_type}`);
+        return httpFile().get(`meals/${meat_type}/${data}`);
     }
 }

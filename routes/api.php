@@ -19,7 +19,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 // front-end
-Route::get('meals/{id}', 'FrontendController@show');
+Route::get('meals/{id}/{storeId}', 'FrontendController@show');
 Route::get('meals', 'FrontendController@index');
 
 // masterlist

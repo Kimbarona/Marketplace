@@ -8,6 +8,7 @@ class Meal extends Model
     protected $table = 'meals';
     protected $guarded =
     [
+        'store_id',
         'meal_id',
         'recipe_id',
         'meal_name',

@@ -39,12 +39,18 @@
                     <v-container>
                         <v-row>
                             <v-col cols="12" md="2">
+                                <v-select v-model="mealData.store_id" :items="Stores" item-text="store_name" item-value="store_id" label="Store"></v-select>
+                                <div class="invalid-feedback" v-if="errors.store_id">
+                                    {{ errors.store_id[0] }}
+                                </div>
+                            </v-col>
+                            <v-col cols="12" md="2">
                                 <v-text-field v-model="mealData.meal_id" label="Meal Code"></v-text-field>
                                 <div class="invalid-feedback" v-if="errors.meal_id">
                                     {{ errors.meal_id[0] }}
                                 </div>
                             </v-col>
-                            <v-col cols="12" md="4">
+                            <v-col cols="12" md="3">
                                 <v-text-field v-model="mealData.meal_name" label="Meal Name"></v-text-field>
                                 <div class="invalid-feedback" v-if="errors.meal_name">
                                     {{ errors.meal_name[0] }}
@@ -56,7 +62,7 @@
                                     {{ errors.recipe_id[0] }}
                                 </div>
                             </v-col>
-                            <v-col cols="12" md="3">
+                            <v-col cols="12" md="2">
                                 <v-select v-model="mealData.meat_type" :items="MeatData" item-text="product_name" item-value="product_name" label="Meat Type"></v-select>
                                 <div class="invalid-feedback" v-if="errors.meat_type">
                                     {{ errors.meat_type[0] }}
@@ -252,7 +258,7 @@
                 <v-card-text>
                     <v-chip-group v-model="selection" column>
                         <v-chip v-for="item in recipeData.recipeitem" :key="item.product_name">
-                            {{ item.quantity + " - " + item.product_name }}
+                            {{ item.quantity + "-"+ item.uom  +" of " + item.product_name }}
                         </v-chip>
                     </v-chip-group>
                 </v-card-text>
@@ -284,6 +290,7 @@ export default {
             selection: 1,
 
             mealData: {
+                store_id: "",
                 recipe_id: "",
                 name: "",
                 meal_id: "",
@@ -371,6 +378,8 @@ export default {
 
             MeatData: [],
 
+            Stores: [],
+
             editMealData: {},
 
             errors: {}
@@ -389,6 +398,7 @@ export default {
                 this.MealData = response.data.meal.data;
                 this.Recipe = response.data.recipe.data;
                 this.MeatData = response.data.meat.data;
+                this.Stores = response.data.stores.data;
                 this.Uom = ['hr', 'minutes'];
                 this.ServingItems = [
                     "1",
@@ -497,6 +507,7 @@ export default {
 
         createMeal: async function () {
             let formData = new FormData();
+            formData.append("store_id", this.mealData.store_id);
             formData.append("recipe_id", this.mealData.recipe_id);
             formData.append("meal_id", this.mealData.meal_id);
             formData.append("meal_name", this.mealData.meal_name);

@@ -20,14 +20,15 @@ class MealController extends Controller
      */
     public function index()
     {
+        $StoreId = DB::table('stores')->select('store_id', 'store_name')->paginate(100000);
         $recipe = DB::table('recipes')->select('recipe_id', 'recipe_name')->paginate(100000);
-        $meal = Meal::with('recipeitem')->Paginate();
+        $meal = Meal::with('recipeitem')->Paginate(100000);
 
         $meat = DB::table('products')
             ->select('product_name')
             ->whereIn('category_name', array("Pork", "Beef", "Chicken", "Fish"))->paginate(100000);
 
-        return response()->json(["meal" => $meal, "recipe" => $recipe, "meat" => $meat], Response::HTTP_OK);
+        return response()->json(["meal" => $meal, "recipe" => $recipe, "meat" => $meat, "stores" => $StoreId], Response::HTTP_OK);
     }
 
     /**
@@ -48,6 +49,7 @@ class MealController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'store_id' => 'required',
             'meal_id' => 'required',
             'recipe_id' => 'required',
             'meal_id' => 'required|unique:meals,meal_id',
@@ -64,6 +66,7 @@ class MealController extends Controller
         ]);
 
         $meal = new Meal();
+        $meal->store_id = $request->store_id;
         $meal->meal_id = $request->meal_id;
         $meal->recipe_id = $request->recipe_id;
         $meal->meal_name = $request->meal_name;

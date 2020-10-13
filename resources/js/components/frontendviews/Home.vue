@@ -83,7 +83,7 @@
                             </v-list-item-title>
                         </v-card-actions>
                         <v-list-item-title class="recipe-amount">
-                            ₱ {{ imahe.product_amount }}
+                            ₱ {{ imahe.price.price }}
                         </v-list-item-title>
                     </v-card>
                 </v-col>
@@ -133,13 +133,14 @@ export default {
     mounted() {
         this.retrieveSearchData();
         // this.retrieveData();
+        // console.log(this.$route.query.store_id);
         // console.log(this.$route.query.meat_type);
     },
 
     methods: {
         retrieveSearchData: async function() {
             try {
-                const response = await frontEndData.retrieveSearchData(this.$route.query.meat_type);
+                const response = await frontEndData.retrieveSearchData(this.$route.query.meat_type, this.$route.query.store_id);
                 this.allMealData = response.data.meals;
                 // console.log(response);
             } catch (error) {

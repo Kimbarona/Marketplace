@@ -16,27 +16,41 @@ class FrontendController extends Controller
 {
     public function index()
     {
-        $meal = Meal::whereHas('price', function ($query) {
-            $query->where('store_id', 101);
-        })
-        ->with(['recipeitem.price' => function($query){
-            $query->where('store_id', 101);
-        }])
+        // $meal = Meal::whereHas('price', function ($query) {
+        //     $query->where('store_id', 100);
+
+        // })
+        // ->with(['recipeitem.price' => function($query){
+        //     $query->where('store_id', 100);
+
+        // }])
+        // ->with(['meals' => function($query){
+        //     $query->whereIn('meal_id', [300, 301]);
+
+        // }])
+
+
+        // $recipe = DB::table('meals')->select('meal_id')->get();
+        $meal = Meal::with(['recipeitem.price'])
+        // ->whereIn('meal_id', [300, 301])
+        // ->whereIn('meal_id', [300, 301])
         ->get();
 
         return response()->json(["meals" => $meal], Response::HTTP_OK);
     }
 
-    public function show($meat_type)
+    public function show($meat_type,$data)
     {
 
         // $meal = Meal::with(['recipeitem'])->where('meat_type', $meat_type)->get();
-        $meal = Meal::whereHas('price', function ($query, $meat_type) {
-            $query->where('store_id', $meat_type);
+        $meal = Meal::whereHas('price', function ($query) use ($data) {
+            $query->where('store_id', $data);
         })
-        ->with(['recipeitem.price' => function($query){
-            $query->where('store_id', 101);
+        ->with(['recipeitem.price' => function($query) use ($data){
+            $query->where('store_id', $data);
         }])
+        ->where('store_id', $data)
+        ->where('meat_type', $meat_type)
         ->get();
 
         return response()->json(["meals" => $meal], Response::HTTP_OK);
